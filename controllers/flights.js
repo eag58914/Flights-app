@@ -9,6 +9,9 @@ function index(req, res) {
 		res.render('flights/index', { flights });
 	});
 }
-function newFlight(flight) {
-	flight.push(flight);
+function newFlight(req, res) {
+	console.log(req.body);
+	req.body.done = false;
+	Flights.create(req.body);
+	res.redirect('/flights');
 }
