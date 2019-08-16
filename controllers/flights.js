@@ -2,7 +2,8 @@ var Flights = require('../models/flight');
 
 module.exports = {
 	index,
-	new: newFlight
+	new: newFlight,
+	create
 };
 function index(req, res) {
 	Flights.find({}, function(err, flights) {
@@ -10,8 +11,14 @@ function index(req, res) {
 	});
 }
 function newFlight(req, res) {
-	console.log(req.body);
-	req.body.done = false;
-	Flights.create(req.body);
-	res.redirect('/flights');
+	res.render('flights/new');
+}
+
+function create(req, res) {
+	var flight = new Flights(req.body);
+	flight.save(function(err) {
+		if (err) return res.redirect('/flights/new');
+		console.log(flight);
+		res.redirect('/flights');
+	});
 }
