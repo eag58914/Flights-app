@@ -16,4 +16,4 @@ var ticketSchema = new Schema({
 	}
 });
 
-module.exports = mongoose('Ticket', ticketSchema);
+module.exports = mongoose.model('Ticket', ticketSchema);

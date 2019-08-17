@@ -7,6 +7,7 @@ require('./config/database');
 
 var indexRouter = require('./routes/index');
 var flightsRouter = require('./routes/flights');
+var ticketsRouter = require('./routes/tickets');
 
 //var flightsRouter = require('./routes/flights');
 
@@ -22,8 +23,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/flights', flightsRouter);
 app.use('/', indexRouter);
+app.use('/', ticketsRouter);
+app.use('/flights', flightsRouter);
 //app.use('/flights', flightsRouter);
 
 // catch 404 and forward to error handler

@@ -9,7 +9,6 @@ module.exports = {
 
 function show(req, res) {
 	Flights.findById(req.params.id, function(err, flight) {
-		console.log(req.params.id);
 		res.render('flights/show', { flight });
 	});
 }
