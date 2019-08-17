@@ -18,16 +18,16 @@
 
        
          <form action="/flights/<%=flight._id%>" method="POST">
-        <label>Add destination<label>
+        <label> Add destination<label>
         <select name="airport">
         <option value="AUS">Austin</option>
         <option value="DAL">Dallas</option>
         <option value="LAX">L.A.</option>
         <option value="SEA">Seatle</option>
       </select>   
-      <button>Click to add destination</button>
+      <button>Add </button>
          </form>
-
+          <p>Ticket Info</p>
          <% tickets.forEach(function(t){%>
          <tr>
          <td>Assigned Seat Number</td>
@@ -36,8 +36,8 @@
          <td>t.price</td>
          </tr>
          <% });%>
-         
-         <form action="/tickets/<%=flight._id%>/new" method="GET">
+
+         <form action="/tickets<%=flight._id%>/new" method="GET">
         <button>Add new Ticket</button>
         </form>
       </tbody>
