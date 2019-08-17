@@ -15,6 +15,17 @@
           <td><%= flight.airport %></td>
           <td><%= flight.departs.toLocaleDateString() %></td>
         </tr>
+
        
+         <form action="/flights/<%=flight._id%>" method="POST">
+        <label>Add destination<label>
+        <select name="airport">
+        <option value="AUS">Austin</option>
+        <option value="DAL">Dallas</option>
+        <option value="LAX">L.A.</option>
+        <option value="SEA">Seatle</option>
+      </select>   
+      <button>Click to add destination</button>
+         </form>
       </tbody>
     </table>
