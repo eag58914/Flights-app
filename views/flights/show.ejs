@@ -27,5 +27,18 @@
       </select>   
       <button>Click to add destination</button>
          </form>
+
+         <% tickets.forEach(function(t){%>
+         <tr>
+         <td>Assigned Seat Number</td>
+         <td><%= t.seat%></td>
+         <td>Price</td>
+         <td>t.price</td>
+         </tr>
+         <% });%>
+         
+         <form action="/tickets/<%=flight._id%>/new" method="GET">
+        <button>Add new Ticket</button>
+        </form>
       </tbody>
     </table>
