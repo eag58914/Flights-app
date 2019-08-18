@@ -1,7 +1,7 @@
 <table>
     <thead>
       <tr>
-        <th>Flight Number</th>
+        <th>Flight #</th>
         <th>AirPort</th>
         <th>AirLine</th>
         <th>Departs</th>
@@ -20,10 +20,12 @@
             <tr>
             <td></td>
                 <td><%= d.airport %></td>
-                <td></td>  
+                <td></td>
+                <td></td>
                 <% if(d.arrival){%>
                 <td><%= `${d.arrival.toLocaleDateString()} :${d.arrival.toLocaleTimeString()}`%></td>
                 <%}else{%>
+                    
                     <td></td>
                     <%}%>      
             </tr>
@@ -39,23 +41,24 @@
         <option value="SEA">Seatle</option>
       </select>   
       <input type="datetime-local" name="arrival">
-      <button>Add </button>
+      <button>Add Destination</button>
          </form>
          
          <table>
          <tbody>
           <p>Ticket Info</p>
          <td>Assigned Seat Number</td>
+         <tr>
          <%tickets.forEach (function(t){%>
          
-         <h1><%=t.seat%></h1>
-         <h1>Price</h1>
-         <h1><%=t.price%></h1>
-         
+         <td><%=t.seat%></td>
+         <td>Price</td>
+         <td><%=t.price%></td>
+         </tr>
          <%});%>
          </tbody>
         </table>
 
          <form action="/tickets<%=flight._id%>/new" method="GET">
-        <button>Add new Ticket</button>
+        <button>Add Ticket</button>
         </form>
