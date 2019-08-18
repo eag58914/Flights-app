@@ -2,8 +2,8 @@
     <thead>
       <tr>
         <th>Flight Number</th>
-        <th>Airline</th>
-        <th>Aiport</th>
+        <th>AirPort</th>
+        <th>AirLine</th>
         <th>Departs</th>
         <th>Arrives</th>
       </tr>
@@ -11,12 +11,25 @@
     <tbody>
         <tr>
           <td><%= flight.flightNo %></td>
-          <td><%= flight.airline %></td>
           <td><%= flight.airport %></td>
+          <td><%= flight.airline %></td>
           <td><%= flight.departs.toLocaleDateString() %></td>
         </tr>
 
-       
+         <%flight.destinations.forEach(function(d){%>
+            <tr>
+            <td></td>
+                <td><%= d.airport %></td>
+                <td></td>  
+                <% if(d.arrival){%>
+                <td><%= `${d.arrival.toLocaleDateString()} :${d.arrival.toLocaleTimeString()}`%></td>
+                <%}else{%>
+                    <td></td>
+                    <%}%>      
+            </tr>
+            <%})%>
+        </tbody>
+       </table>
          <form action="/flights/<%=flight._id%>" method="POST">
         <label> Add destination<label>
         <select name="airport">
@@ -25,20 +38,24 @@
         <option value="LAX">L.A.</option>
         <option value="SEA">Seatle</option>
       </select>   
+      <input type="datetime-local" name="arrival">
       <button>Add </button>
          </form>
+         
+         <table>
+         <tbody>
           <p>Ticket Info</p>
-         <% tickets.forEach(function(t){%>
-         <tr>
          <td>Assigned Seat Number</td>
-         <td><%= t.seat%></td>
-         <td>Price</td>
-         <td>t.price</td>
-         </tr>
-         <% });%>
+         <%tickets.forEach (function(t){%>
+         
+         <h1><%=t.seat%></h1>
+         <h1>Price</h1>
+         <h1><%=t.price%></h1>
+         
+         <%});%>
+         </tbody>
+        </table>
 
          <form action="/tickets<%=flight._id%>/new" method="GET">
         <button>Add new Ticket</button>
         </form>
-      </tbody>
-    </table>

@@ -10,9 +10,7 @@ function newTicket(req, res) {
 }
 function create(req, res) {
 	var ticket = new Ticket(req.body);
-	ticket.save(function(err) {
-		if (err) return res.redirect('/tickets/new');
-		console.log(ticket);
-		res.redirect('/flights/');
+	ticket.save(function() {
+		res.redirect('/flights');
 	});
 }
