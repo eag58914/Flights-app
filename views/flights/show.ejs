@@ -43,22 +43,30 @@
       <input type="datetime-local" name="arrival">
       <button>Add Destination</button>
          </form>
-         
          <table>
          <tbody>
-          <p>Ticket Info</p>
-         <td>Assigned Seat Number</td>
-         <tr>
-         <%tickets.forEach (function(t){%>
+
          
-         <td><%=t.seat%></td>
-         <td>Price</td>
-         <td><%=t.price%></td>
-         </tr>
-         <%});%>
+<h2>Ticket Info</h2>
+<% if (tickets.length) { %>
+<% tickets.forEach(function(t) { %>
+<br>
+<%= t.seat %>
+<%= t.price %>
+<% })}; %>
+<br>
+
+<form action="/flights/<%=flight._id%>/tickets" method="POST">
+<label>Seat Number: <br>Capital Letter:1-9:0-9 <br>example: F26</label>
+    <input name="seat" required pattern="[A-F][1-9]\d?">
+    <label>Price</label>
+    <input name="price">
+        <button>Add new Ticket</button>
+        </form>
+        
          </tbody>
         </table>
 
-         <form action="/tickets<%=flight._id%>/new" method="GET">
-        <button>Add Ticket</button>
-        </form>
+
+
+      
